@@ -9,7 +9,14 @@ export default function ProductCatalog() {
   return (
     <div className="product-catalog">
       {products.map((product) => (
-        <ProductCard key={product.node.id} product={product.node} />
+        <ProductCard
+          key={product.node.id}
+          id={product.node.id}
+          title={product.node.title}
+          imageUrl={product.node.featuredImage.url}
+          price={100}
+          rating={4}
+        />
       ))}
     </div>
   )
