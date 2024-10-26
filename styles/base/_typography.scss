@@ -1,0 +1,77 @@
+@mixin responsive-font($min-size, $max-size, $min-vw: 320px, $max-vw: 1200px) {
+  font-size: calc(
+    #{$min-size} + (#{$max-size} - #{$min-size}) * (100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw})
+  );
+}
+
+body {
+  font-family: $font-primary;
+  font-size: $font-size-body;
+  line-height: $line-height;
+  color: $text-color;
+  margin: 0;
+}
+
+h1,
+.h1 {
+  font-size: $font-size-h1;
+  color: $heading-color;
+  font-family: $font-secondary;
+  line-height: $line-height;
+  @include responsive-font(2rem, 3rem);
+}
+
+h2,
+.h2 {
+  font-size: $font-size-h2;
+  color: $heading-color;
+  font-family: $font-secondary;
+  line-height: $line-height;
+  @include responsive-font(1.75rem, 2.5rem);
+}
+
+h3,
+.h3 {
+  font-size: $font-size-h3;
+  color: $heading-color;
+  font-family: $font-secondary;
+  line-height: $line-height;
+  @include responsive-font(1.5rem, 2rem);
+}
+
+p {
+  font-size: $font-size-body;
+  line-height: $line-height;
+  margin-bottom: 1em;
+  color: $text-color;
+}
+
+.text-muted {
+  color: $muted-color;
+  font-size: $base-font-size * 0.875; // Slightly smaller
+}
+
+a {
+  color: $heading-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: darken($heading-color, 10%);
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-italic {
+  font-style: italic;
+}

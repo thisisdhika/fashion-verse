@@ -1,0 +1,15 @@
+$font-primary: 'Poppins', sans-serif;
+$font-secondary: 'Oswald', serif;
+
+$text-color: #333;
+$heading-color: #111;
+$muted-color: #666;
+
+$base-font-size: 16px;
+$line-height: 1.5;
+$font-scale: 1.25;
+
+$font-size-h1: $base-font-size * $font-scale * $font-scale * $font-scale; // e.g., 32px
+$font-size-h2: $base-font-size * $font-scale * $font-scale; // e.g., 24px
+$font-size-h3: $base-font-size * $font-scale; // e.g., 20px
+$font-size-body: $base-font-size; // e.g., 16px

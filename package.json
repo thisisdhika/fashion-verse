@@ -1,5 +1,5 @@
 {
-  "name": "e-kaamerce",
+  "name": "fashion-verse",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
+    "graphql-request": "^7.1.0",
+    "localforage": "^1.10.0",
+    "next": "15.0.1",
+    "normalize.css": "^8.0.1",
+    "postcss": "^8.4.47",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
-    "next": "15.0.1"
+    "sass": "^1.80.4",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "typescript": "^5",
