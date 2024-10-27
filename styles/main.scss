@@ -3,6 +3,10 @@
 @import './base/reset';
 @import './base/typography';
 
-@import './module/container';
+@import './utils/container';
+@import './utils/grid';
+@import './utils/flex';
+
 @import './module/button';
 @import './module/product-card';
+@import './module/product-catalog';

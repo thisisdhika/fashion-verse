@@ -1,30 +1,70 @@
-// import type { Product } from '@/types'
-// import StoreInitializer from '@/store/providers/StoreInitializer'
+import * as React from 'react'
+import { Product } from '@/types'
+import { request, gql } from 'graphql-request'
+import ProductDetail from '@/components/ProductDetail'
 
-export default async function ProductDetailPage() {
-  // const productId = parseInt(params.id, 10)
+interface ProductPageProps {
+  params: { id: string }
+}
 
-  // const productDetails = await fetch(
-  //   `https://my-json-server.typicode.com/your-profile/products/${productId}`
-  // ).then((res) => res.json())
+const query = (id: string) => gql`
+  {
+    product(id: "gid://shopify/Product/${id}") {
+      id
+      title
+      description
+      featuredImage {
+        id
+        url
+      }
+      images(first: 10) {
+        edges {
+          node {
+            url
+          }
+        }
+      }
+      variants (first: 10) {
+        edges {
+          cursor
+          node {
+            id
+            title
+            image {
+              url
+            }
+            price {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+const ProductPage: React.FC<ProductPageProps> = async (props) => {
+  const params = await props.params
+  const { product }: { product: Product['node'] } = await request('https://mock.shop/api', query(params.id))
+
+  console.log(product)
+  if (!product) {
+    return <p>Product not found.</p>
+  }
 
   return (
-    <>
-      {/* <StoreInitializer initialData={{ productDetails: { [productId]: productDetails } }} /> */}
-      {/* <ProductDetailContent product={{}} /> */}
-    </>
+    <div className="container">
+      <ProductDetail
+        id={product.id}
+        title={product.title}
+        description={product.description}
+        variants={product.variants.edges}
+        imageUrl={product.featuredImage.url}
+        price={+product.variants.edges[0].node.price.amount}
+      />
+    </div>
   )
 }
 
-// function ProductDetailContent({ product }: { product: Product }) {
-//   console.log(product)
-//   return (
-//     <div>
-//       {/* eslint-disable-next-line @next/next/no-img-element */}
-//       {/* <img src={product.image} alt={product.name} />
-//       <h1>{product.name}</h1>
-//       <p>{product.description}</p>
-//       <p>${product.price}</p> */}
-//     </div>
-//   )
-// }
+export default ProductPage

@@ -6,6 +6,20 @@ export interface Product {
     featuredImage: {
       url: string
     }
+    variants: {
+      edges: {
+        node: {
+          id: string
+          title: string
+          image: {
+            url: string
+          }
+          price: {
+            amount: number
+          }
+        }
+      }[]
+    }
   }
 }
 

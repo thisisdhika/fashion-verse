@@ -1,7 +1,7 @@
+import * as React from 'react'
 import { request, gql } from 'graphql-request'
 import ProductCatalog from '@/components/ProductCatalog'
 import StoreInitializer from '@/store/providers/StoreInitializer'
-import React from 'react'
 
 const query = gql`
   {

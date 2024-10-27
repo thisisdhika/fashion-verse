@@ -1,4 +1,4 @@
-import Image from "next/legacy/image"
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 
 interface ProductCardProps {
@@ -9,17 +9,12 @@ interface ProductCardProps {
   rating?: number
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ id, title, imageUrl, price, rating }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ id, title, imageUrl, price }) => {
   return (
-    <article
-      className="product-card"
-      itemScope
-      itemType="https://schema.org/Product"
-      aria-labelledby={`product-title-${id}`}
-    >
-      {/* Product Image */}
-      <Link href={`/product/${id}`} passHref legacyBehavior>
-        <a>
+    <article itemScope itemType="https://schema.org/Product" aria-labelledby={`product-title-${id}`}>
+      <Link href={`/products/${id.replace('gid://shopify/Product/', '')}`} passHref legacyBehavior>
+        <a className="product-card">
+          {/* Product Image */}
           <Image
             src={imageUrl}
             alt={title}
@@ -29,45 +24,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, imageUrl, price, r
             objectFit="cover"
             loading="lazy"
             itemProp="image"
+            className="product-card__image"
           />
+
+          <div className="product-card__content">
+            {/* Product Title */}
+            <h3 id={`product-title-${id}`} className="product-card__title" itemProp="name">
+              {title}
+            </h3>
+
+            {/* Product Price */}
+            <p className="product-card__price">
+              <span className="product-card__price__label">Start from</span> <br />
+              <span itemProp="offers" itemScope itemType="https://schema.org/Offer">
+                <meta itemProp="priceCurrency" content="USD" />
+                <span itemProp="price">${price.toFixed(2)}</span>
+              </span>
+            </p>
+          </div>
         </a>
       </Link>
-
-      {/* Product Title */}
-      <h2 id={`product-title-${id}`} itemProp="name">
-        <Link href={`/product/${id}`} passHref legacyBehavior>
-          <a className="product-link" itemProp="url">
-            {title}
-          </a>
-        </Link>
-      </h2>
-
-      {/* Product Price */}
-      <p className="product-price">
-        <span itemProp="offers" itemScope itemType="https://schema.org/Offer">
-          <meta itemProp="priceCurrency" content="USD" />
-          <span itemProp="price">${price.toFixed(2)}</span>
-        </span>
-      </p>
-
-      {/* Product Rating (Optional) */}
-      {rating && (
-        <div
-          className="product-rating"
-          aria-label={`Rated ${rating} out of 5`}
-          itemProp="aggregateRating"
-          itemScope
-          itemType="https://schema.org/AggregateRating"
-        >
-          <meta itemProp="ratingValue" content={rating.toString()} />
-          <meta itemProp="reviewCount" content="89" />
-          <span aria-hidden="true">
-            {'★'.repeat(rating)}
-            {'☆'.repeat(5 - rating)}
-          </span>
-          <span className="sr-only">{rating} out of 5 stars</span>
-        </div>
-      )}
     </article>
   )
 }

@@ -1,1 +1,15 @@
 @import 'normalize.css';
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  background-color: #f3f3f3;
+}

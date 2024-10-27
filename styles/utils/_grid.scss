@@ -1,0 +1,70 @@
+// Grid Container Mixin
+@mixin grid-container($gap: 1rem) {
+  display: grid;
+  gap: $gap;
+}
+
+// Grid Columns Mixin
+@mixin grid-cols($cols: 1) {
+  grid-template-columns: repeat($cols, 1fr);
+}
+
+// Grid Rows Mixin
+@mixin grid-rows($rows: 1) {
+  grid-template-rows: repeat($rows, 1fr);
+}
+
+// Grid Gap Mixin
+@mixin grid-gap($gap: 1rem) {
+  gap: $gap;
+}
+
+// Grid Alignment Mixin
+@mixin grid-align($align: center, $justify: center) {
+  align-items: $align;
+  justify-content: $justify;
+}
+
+// Utility Classes Using Grid Mixins
+.grid-container {
+  @include grid-container;
+}
+.grid-cols-1 {
+  @include grid-cols(1);
+}
+.grid-cols-2 {
+  @include grid-cols(2);
+}
+.grid-cols-3 {
+  @include grid-cols(3);
+}
+.grid-cols-4 {
+  @include grid-cols(4);
+}
+.grid-rows-1 {
+  @include grid-rows(1);
+}
+.grid-rows-2 {
+  @include grid-rows(2);
+}
+.grid-gap-1 {
+  @include grid-gap(0.25rem);
+}
+.grid-gap-2 {
+  @include grid-gap(0.5rem);
+}
+.grid-gap-3 {
+  @include grid-gap(1rem);
+}
+.grid-center {
+  @include grid-align(center, center);
+}
+.grid-start {
+  @include grid-align(start, start);
+}
+.grid-end {
+  @include grid-align(end, end);
+}
+.grid-space-between {
+  @include grid-align(center, space-between);
+}

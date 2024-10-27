@@ -1,0 +1,6 @@
+.product-catalog {
+  @include grid-container(1rem);
+  @include grid-cols(4);
+
+  margin: 3rem 0;
+}

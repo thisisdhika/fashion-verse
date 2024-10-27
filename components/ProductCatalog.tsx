@@ -6,6 +6,7 @@ import { useStore } from '@/store/createStore'
 export default function ProductCatalog() {
   const products = useStore((state) => state.products)
 
+  console.log(products[0])
   return (
     <div className="product-catalog">
       {products.map((product) => (
@@ -14,8 +15,7 @@ export default function ProductCatalog() {
           id={product.node.id}
           title={product.node.title}
           imageUrl={product.node.featuredImage.url}
-          price={100}
-          rating={4}
+          price={+product.node.variants.edges[0].node.price.amount}
         />
       ))}
     </div>

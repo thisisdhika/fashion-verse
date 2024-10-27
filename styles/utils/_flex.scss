@@ -1,0 +1,82 @@
+// Flex Container Mixin
+@mixin flex-container($direction: row, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+// Flex Justify Content Mixin
+@mixin flex-justify($justify: center) {
+  justify-content: $justify;
+}
+
+// Flex Align Items Mixin
+@mixin flex-align-items($align: center) {
+  align-items: $align;
+}
+
+// Flex Align Self Mixin (for individual items)
+@mixin flex-align-self($align: auto) {
+  align-self: $align;
+}
+
+// Flex Gap Mixin (for modern browsers supporting gap in flex)
+@mixin flex-gap($gap: 1rem) {
+  gap: $gap;
+}
+
+// Utility Classes Using Flex Mixins
+.flex-container {
+  @include flex-container;
+}
+.flex-row {
+  @include flex-container(row);
+}
+.flex-col {
+  @include flex-container(column);
+}
+.flex-wrap {
+  @include flex-container(row, wrap);
+}
+.flex-nowrap {
+  @include flex-container(row, nowrap);
+}
+.justify-start {
+  @include flex-justify(flex-start);
+}
+.justify-center {
+  @include flex-justify(center);
+}
+.justify-end {
+  @include flex-justify(flex-end);
+}
+.justify-between {
+  @include flex-justify(space-between);
+}
+.items-start {
+  @include flex-align-items(flex-start);
+}
+.items-center {
+  @include flex-align-items(center);
+}
+.items-end {
+  @include flex-align-items(flex-end);
+}
+.self-start {
+  @include flex-align-self(flex-start);
+}
+.self-center {
+  @include flex-align-self(center);
+}
+.self-end {
+  @include flex-align-self(flex-end);
+}
+.flex-gap-1 {
+  @include flex-gap(0.25rem);
+}
+.flex-gap-2 {
+  @include flex-gap(0.5rem);
+}
+.flex-gap-3 {
+  @include flex-gap(1rem);
+}
