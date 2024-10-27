@@ -15,17 +15,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, imageUrl, price })
       <Link href={`/products/${id.replace('gid://shopify/Product/', '')}`} passHref legacyBehavior>
         <a className="product-card">
           {/* Product Image */}
-          <Image
-            src={imageUrl}
-            alt={title}
-            width={300}
-            height={300}
-            layout="responsive"
-            objectFit="cover"
-            loading="lazy"
-            itemProp="image"
-            className="product-card__image"
-          />
+          <div className="product-card__image-wrapper">
+            <Image
+              src={imageUrl}
+              alt={title}
+              width={300}
+              height={300}
+              layout="responsive"
+              objectFit="cover"
+              loading="lazy"
+              itemProp="image"
+              className="product-card__image"
+            />
+          </div>
 
           <div className="product-card__content">
             {/* Product Title */}
