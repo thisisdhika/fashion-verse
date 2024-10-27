@@ -1,8 +1,11 @@
-import type { Metadata } from 'next'
+import clsx from 'clsx'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import { Poppins, Oswald } from 'next/font/google'
 
+import type { Metadata } from 'next'
+
 import '@/styles/main.scss'
-import clsx from 'clsx'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,7 +31,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={clsx(poppins.className, oswald.className)}>
-      <body>{children}</body>
+      <body>
+        <main>
+          <Header />
+          {children}
+          <Footer />
+        </main>
+      </body>
     </html>
   )
 }
