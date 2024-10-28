@@ -6,6 +6,13 @@ export interface Product {
     featuredImage: {
       url: string
     }
+    images: {
+      edges: {
+        node: {
+          url: string
+        }
+      }[]
+    }
     variants: {
       edges: {
         node: {

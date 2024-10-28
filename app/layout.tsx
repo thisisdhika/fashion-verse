@@ -32,11 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={clsx(poppins.className, oswald.className)}>
       <body>
-        <main>
-          <Header />
-          {children}
-          <Footer />
-        </main>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )

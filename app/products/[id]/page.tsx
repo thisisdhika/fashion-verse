@@ -4,7 +4,7 @@ import { request, gql } from 'graphql-request'
 import ProductDetail from '@/components/ProductDetail'
 
 interface ProductPageProps {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 const query = (id: string) => gql`
@@ -60,7 +60,7 @@ const ProductPage: React.FC<ProductPageProps> = async (props) => {
         title={product.title}
         description={product.description}
         variants={product.variants.edges}
-        imageUrl={product.featuredImage.url}
+        images={product.images.edges.map((image) => image.node.url)}
         price={+product.variants.edges[0].node.price.amount}
       />
     </div>

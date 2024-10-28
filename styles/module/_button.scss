@@ -1,0 +1,105 @@
+.btn {
+  &__primary {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #333333;
+    border: 2px solid #ffffff;
+    box-shadow: 4px 4px 0px #000000;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+
+    &:hover {
+      background-color: #4f4f4f;
+      color: #ffffff;
+      box-shadow: 2px 2px 0px #000000;
+      transform: translate(-2px, -2px);
+    }
+
+    &:active {
+      box-shadow: 1px 1px 0px #000000;
+      transform: translate(1px, 1px);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      bottom: -4px;
+      left: -4px;
+      background: linear-gradient(45deg, #555555, #333333);
+      z-index: -1;
+      clip-path: inherit;
+    }
+  }
+
+  &__variant {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #555;
+    border: 2px solid #fff;
+    box-shadow: 3px 3px 0px #000;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+
+    /* Inactive state */
+    &.inactive {
+      background-color: #888;
+      color: #bbb;
+      box-shadow: 3px 3px 0px #666;
+      opacity: 0.6;
+
+      &:hover,
+      &:active {
+        transform: none;
+        box-shadow: 3px 3px 0px #666;
+      }
+    }
+
+    /* Active state */
+    &.active {
+      background-color: #222;
+      color: #fff;
+      box-shadow: 3px 3px 0px #000;
+
+      &:hover {
+        background-color: #333;
+        box-shadow: 2px 2px 0px #000;
+        transform: translate(-1px, -1px);
+      }
+
+      &:active {
+        box-shadow: 1px 1px 0px #000;
+        transform: translate(1px, 1px);
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      bottom: -4px;
+      left: -4px;
+      background: linear-gradient(45deg, #444, #222);
+      z-index: -1;
+      clip-path: inherit;
+      opacity: 0.9;
+    }
+  }
+}

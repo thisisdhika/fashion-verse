@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import * as React from 'react'
 
 const Header: React.FC = () => {
@@ -5,7 +6,9 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
-          <h1 className="header__brand">FashionVerse</h1>
+          <h1 className="header__brand">
+            <Link href="/">FashionVerse</Link>
+          </h1>
           <div>
             <button className="header__cart-button" aria-label="View cart">
               <svg

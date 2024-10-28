@@ -3,4 +3,8 @@
   @include grid-cols(4);
 
   margin: 3rem 0;
+
+  @media (max-width: 480px) {
+    @include grid-cols(2);
+  }
 }
